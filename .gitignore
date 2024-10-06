@@ -1,0 +1,20 @@
+# Ignore IDE specific folders
+.vs
+.vscode
+.idea
+
+# Ignore build folders
+build
+cmake-build-debug
+cmake-build-release
+
+# Ignore game binaries
+game/bin
+game/lib
+
+# Ignore game saves and configs
+game/cfg/user.cfg
+game/save
+
+# Ignore debug logs
+game/log
