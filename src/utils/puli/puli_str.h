@@ -35,6 +35,8 @@ ssize_t pStrFindAnyLast(const char* str, const char* to_find);
 ssize_t pStrFindAnyNot(const char* str, const char* to_find);
 ssize_t pStrFindAnyLastNot(const char* str, const char* to_find);
 
+size_t pStrHash(const char* str);
+
 #define pStrEquals(__lhs, __rhs)       (strcmp(__lhs, __rhs) == 0)
 #define pStrnEquals(__lhs, __rhs, __n) (strncmp(__lhs, __rhs, __n) == 0)
 

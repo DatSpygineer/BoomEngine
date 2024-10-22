@@ -12,7 +12,18 @@ typedef struct BscScriptEngine BscScriptEngine;
 typedef struct BscValue BscValue;
 typedef struct BscFunction BscFunction;
 typedef struct BscStructField BscStructField;
+typedef struct BscStructFieldDef BscStructFieldDef;
 typedef struct BscStruct BscStruct;
+
+typedef enum BscError {
+	BSC_OK = 0,
+	BSC_ERROR_NULLPTR,
+	BSC_ERROR_STACK_OVERFLOW,
+	BSC_ERROR_STACK_UNDERFLOW,
+	BSC_ERROR_OUT_OF_MEMORY,
+	BSC_ERROR_REDEFINITION,
+	BSC_ERROR_UNDEFINED
+} BscError;
 
 typedef enum ValueType {
 	BSC_T_NONE,
@@ -25,8 +36,7 @@ typedef enum ValueType {
 	BSC_T_ARRAY,
 	BSC_T_STRUCT,
 	BSC_T_VECTOR,
-	BSC_T_COLOR,
-	BSC_T_MATRIX
+	BSC_T_COLOR
 } ValueType;
 
 typedef int (*BscCFunction)(BscScriptEngine* se, int argc);
@@ -48,24 +58,41 @@ struct BscValue {
 		char* s_value;
 		BscFunction fn_value;
 		BscStruct* struct_value;
+		float vec_value[4];
 		void* p_value;
 	};
 	ValueType type;
 	ValueType subtype;
 };
 
-struct BscStructField {
-	uint64_t key;
-	BscValue value;
-};
-
 struct BscStruct {
-	uint64_t id;
+	size_t id;
 	BscStructField* fields;
 	size_t num_fields;
 };
 
-struct BscScriptEngine {
-	BscValue stack[BSC_MAX_STACK_COUNT];
-	BscValue A, B, C;
+struct BscStructFieldDef {
+	const char* name;
+	BscValue value;
 };
+
+BscScriptEngine* BscInitialize();
+void BscFree(BscScriptEngine** s);
+
+BscError BscPush(BscScriptEngine* s, BscValue value);
+BscError BscPushNone(BscScriptEngine* s);
+BscError BscPushBool(BscScriptEngine* s, bool value);
+BscError BscPushInt(BscScriptEngine* s, int32_t value);
+BscError BscPushUInt(BscScriptEngine* s, uint32_t value);
+BscError BscPushFloat(BscScriptEngine* s, float value);
+BscError BscPushCFunc(BscScriptEngine* s, BscCFunction value);
+BscError BscPushVector(BscScriptEngine* s, float vector[3]);
+BscError BscPushColor(BscScriptEngine* s, float color[4]);
+BscError BscPop(BscScriptEngine* s);
+
+BscError BscSetGlobal(BscScriptEngine* s, const char* name);
+BscError BscGetGlobal(BscScriptEngine* s, const char* name);
+
+BscError BscDeclareStruct(BscScriptEngine* s, const char* name, const BscStructFieldDef* fields, size_t field_count);
+BscError BscCreateStructInstance(BscScriptEngine* s, const char* name);
+

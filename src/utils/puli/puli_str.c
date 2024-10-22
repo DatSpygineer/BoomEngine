@@ -151,6 +151,15 @@ ssize_t pStrFindAnyLastNot(const char* str, const char* to_find) {
 	return -1;
 }
 
+size_t pStrHash(const char* str) {
+	size_t hash = 0;
+	char c;
+	while ((c = *str++) != '\0') {
+		hash = c + (hash << 6) + (hash << 16) - hash;
+	}
+	return hash;
+}
+
 const char* pStrGetTok(const char* str, char* line, size_t maxBufSize, char delim) {
 	if (str == NULL || strlen(str) == 0 || line == NULL) return NULL;
 
