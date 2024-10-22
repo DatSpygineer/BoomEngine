@@ -1,0 +1,27 @@
+# ninja log v6
+15	549	7507001046190434	src/engine/CMakeFiles/BoomClientLib.dir/shared/vector.c.obj	4d78d27e64b19419
+15	565	7507008462551551	src/engine/CMakeFiles/BoomClientLib.dir/client/window.c.obj	f20311308c22a3a0
+12	544	7506992263905522	src/utils/puli/CMakeFiles/puli.dir/puli_fsys.c.obj	c9a683ba06f74de2
+20	2569	7506992264000685	src/utils/puli/CMakeFiles/puli.dir/puli_diag.cpp.obj	b10b35a042e2890e
+4	265	1729375008110088800	src/utils/puli/CMakeFiles/puli.dir/puli_fsys.c.o	d60593c1316dd31d
+7	73	1729372199506122100	src/engine/CMakeFiles/BoomServerLib.dir/shared/vector.c.o	b807e3df3f04bc8a
+27	795	7507000522099982	src/engine/CMakeFiles/BoomClientLib.dir/shared/paths.c.obj	3bd2dee414f0c9d5
+23	805	7507000522060035	src/engine/CMakeFiles/BoomClientLib.dir/shared/debug.c.obj	daf5bb49377000a7
+7	49	1729372199505828200	src/engine/CMakeFiles/BoomServerLib.dir/shared/paths.c.o	a8e6d3a0893ec709
+39	307	1729372258704048400	/mnt/projects/Projects/C/boom/game/boom	1e3a492f7867b812
+4	259	1729375008109745400	src/utils/puli/CMakeFiles/puli.dir/puli_dll.c.o	2a8ac0bce9e09923
+74	317	1729372199572410500	/mnt/projects/Projects/C/boom/game/bin/libboom_sv.so	a813c1eaf313b10c
+5	102	1729372184524786600	src/engine/CMakeFiles/BoomClientLib.dir/client/window.c.o	a8bb1fcd71635260
+6	65	1729372184525612700	src/engine/CMakeFiles/BoomClientLib.dir/shared/cvar.c.o	3b0782c555a80b2
+5	268	1729375008110340300	src/utils/puli/CMakeFiles/puli.dir/puli_str.c.o	a533be3d14d39203
+355	869	7506992484547528	src/utils/puli/CMakeFiles/puli.dir/puli_str.c.obj	c73ff5adca4e4206
+6	49	1729372199505357900	src/engine/CMakeFiles/BoomServerLib.dir/shared/debug.c.o	3b265cefca8ac4be
+6	51	1729372159881893700	src/engine/CMakeFiles/BoomClientLib.dir/shared/paths.c.o	cc5dc2fc412ad144
+6	47	1729372184526146700	src/engine/CMakeFiles/BoomClientLib.dir/shared/debug.c.o	320dc7dcd03d3bb9
+76	2064	1729372148428151600	src/utils/puli/CMakeFiles/puli.dir/puli_diag.cpp.o	f544786f40d1508d
+2080	2105	1729372150431572600	/mnt/projects/Projects/C/boom/dev/libpuli.a	cd52836be8e6b498
+6	81	1729372159882649100	src/engine/CMakeFiles/BoomClientLib.dir/shared/vector.c.o	a6133bb029b69b7c
+20	521	7507008462591568	src/engine/CMakeFiles/BoomClientLib.dir/shared/cvar.c.obj	d380195e049d7f4a
+102	391	1729372184621954500	/mnt/projects/Projects/C/boom/game/bin/libboom_cl.so	5341fce6889adea1
+4	63	1729372199503266300	src/engine/CMakeFiles/BoomServerLib.dir/shared/cvar.c.o	226bb8e6551c9e5d
+4	39	1729372258669404500	src/game/launcher/CMakeFiles/BoomLauncher.dir/client.c.o	b350bd26a5f12574

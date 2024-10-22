@@ -1,0 +1,334 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "src",
+					"childIndexes" : 
+					[
+						2,
+						4,
+						6
+					],
+					"jsonFile" : "directory-src-Debug-b6cf2213fc5053b67c22.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src"
+				},
+				{
+					"build" : "src/engine",
+					"childIndexes" : 
+					[
+						3
+					],
+					"jsonFile" : "directory-src.engine-Debug-f18d3e3eac6b44c09f1e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/engine",
+					"targetIndexes" : 
+					[
+						0,
+						4
+					]
+				},
+				{
+					"build" : "src/engine/scripting",
+					"jsonFile" : "directory-src.engine.scripting-Debug-ba466495dc3ad9768455.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 1,
+					"source" : "src/engine/scripting",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "src/game",
+					"childIndexes" : 
+					[
+						5
+					],
+					"jsonFile" : "directory-src.game-Debug-c373ccdb774a98098318.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/game"
+				},
+				{
+					"build" : "src/game/launcher",
+					"jsonFile" : "directory-src.game.launcher-Debug-28cb89c5a4a7a93e0e23.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 2,
+					"source" : "src/game/launcher",
+					"targetIndexes" : 
+					[
+						1,
+						3
+					]
+				},
+				{
+					"build" : "src/utils",
+					"childIndexes" : 
+					[
+						7,
+						9
+					],
+					"jsonFile" : "directory-src.utils-Debug-3e06762d87894fb62125.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/utils"
+				},
+				{
+					"build" : "src/utils/puli",
+					"childIndexes" : 
+					[
+						8
+					],
+					"jsonFile" : "directory-src.utils.puli-Debug-a932fc413e5776130f1c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"parentIndex" : 6,
+					"projectIndex" : 3,
+					"source" : "src/utils/puli",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "src/utils/puli/test",
+					"jsonFile" : "directory-src.utils.puli.test-Debug-f937fbfa8cfb6b5d6053.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"parentIndex" : 7,
+					"projectIndex" : 4,
+					"source" : "src/utils/puli/test",
+					"targetIndexes" : 
+					[
+						6
+					]
+				},
+				{
+					"build" : "src/utils/ut",
+					"jsonFile" : "directory-src.utils.ut-Debug-a072db8dce9172a6372e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"parentIndex" : 6,
+					"projectIndex" : 5,
+					"source" : "src/utils/ut",
+					"targetIndexes" : 
+					[
+						7
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						5
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						4,
+						6
+					],
+					"name" : "BoomServerLib",
+					"targetIndexes" : 
+					[
+						0,
+						4
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						3
+					],
+					"name" : "BoomScript",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						5
+					],
+					"name" : "BoomServer",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1,
+						3
+					]
+				},
+				{
+					"childIndexes" : 
+					[
+						4
+					],
+					"directoryIndexes" : 
+					[
+						7
+					],
+					"name" : "puli",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						8
+					],
+					"name" : "puli_test",
+					"parentIndex" : 3,
+					"targetIndexes" : 
+					[
+						6
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						9
+					],
+					"name" : "ut",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						7
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 2,
+					"id" : "BoomClientLib::@d30147da1c6e0503853c",
+					"jsonFile" : "target-BoomClientLib-Debug-6dd704bded528ecf23c3.json",
+					"name" : "BoomClientLib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "BoomLauncher::@f87571c276d0ca1dc0f3",
+					"jsonFile" : "target-BoomLauncher-Debug-2188b36ca64b6d9aaa7c.json",
+					"name" : "BoomLauncher",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "BoomScript::@1a090340c2a36e4652d2",
+					"jsonFile" : "target-BoomScript-Debug-7ef5285fc93db41ae563.json",
+					"name" : "BoomScript",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "BoomServer::@f87571c276d0ca1dc0f3",
+					"jsonFile" : "target-BoomServer-Debug-f2288b14ab49010495a9.json",
+					"name" : "BoomServer",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "BoomServerLib::@d30147da1c6e0503853c",
+					"jsonFile" : "target-BoomServerLib-Debug-2d40f1712b3c8d087919.json",
+					"name" : "BoomServerLib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "puli::@80230bd2222b2b8fe79f",
+					"jsonFile" : "target-puli-Debug-4116eec910340adf5c86.json",
+					"name" : "puli",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "puli_test::@5c3a5e652069226a47f8",
+					"jsonFile" : "target-puli_test-Debug-1d267b0db32bfb09879d.json",
+					"name" : "puli_test",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "ut::@549b860fb2631d448910",
+					"jsonFile" : "target-ut-Debug-1ac9d4d1b792a0a6af32.json",
+					"name" : "ut",
+					"projectIndex" : 5
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/mnt/projects/Projects/C/boom/cmake-build-debug",
+		"source" : "/mnt/projects/Projects/C/boom"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
