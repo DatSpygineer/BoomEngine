@@ -1,0 +1,10 @@
+# Ignore IDE files
+.vs
+.vscode
+.idea
+
+# Ignore binaries
+./dev
+./game/bin
+./game/boom
+./game/boom.exe
