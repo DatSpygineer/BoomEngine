@@ -127,6 +127,28 @@ BscError BscPop(BscScriptEngine* s) {
 	return BSC_OK;
 }
 
+bool BscGetBool(BscScriptEngine* s, int32_t idx) {
+
+}
+int32_t BscGetInt(BscScriptEngine* s, int32_t idx) {
+
+}
+uint32_t BscGetUInt(BscScriptEngine* s, int32_t idx) {
+
+}
+float BscGetFloat(BscScriptEngine* s, int32_t idx) {
+
+}
+BscFunction BscGetFunction(BscScriptEngine* s, int32_t idx) {
+
+}
+void BscGetVector(BscScriptEngine* s, int32_t idx, float vector[3]) {
+
+}
+void BscGetColor(BscScriptEngine* s, int32_t idx, float vector[4]) {
+
+}
+
 BscError BscSetGlobal(BscScriptEngine* s, const char* name) {
 	if (s == NULL) {
 		return BSC_ERROR_NULLPTR;
@@ -162,4 +184,63 @@ BscError BscGetGlobal(BscScriptEngine* s, const char* name) {
 	}
 
 	return BscPush(s, field->value);
+}
+
+BscError BscDeclareStruct(BscScriptEngine* s, const char* name, const BscStructFieldDef* fields, size_t field_count) {
+}
+BscError BscCreateStructInstance(BscScriptEngine* s, const char* name) {
+}
+
+BscError BscCall(BscScriptEngine* s, size_t argc, size_t retc) {
+}
+
+BscError BscGetField(BscScriptEngine* s, int32_t idx, const char* name) {
+}
+BscError BscSetField(BscScriptEngine* s, int32_t idx, const char* name) {
+}
+BscError BscGetI(BscScriptEngine* s, int32_t idx, size_t item_idx) {
+}
+BscError BscSetI(BscScriptEngine* s, int32_t idx, size_t item_idx) {
+}
+
+BscError BscLoad(BscScriptEngine* s, const uint8_t* data, size_t size) {
+}
+BscError BscLoadString(BscScriptEngine* s, const char* str) {
+}
+BscError BscLoadFile(BscScriptEngine* s, const char* filename) {
+	FILE* f = fopen(filename, "r");
+	if (f == NULL) {
+		return BSC_ERROR_FILE_UNABLE_TO_OPEN;
+	}
+
+}
+BscError BscRun(BscScriptEngine* s, const uint8_t* data, size_t size) {
+	BscError err;
+	if ((err = BscLoad(s, data, size)) != BSC_OK) {
+		return err;
+	}
+	if ((err = BscGetGlobal(s, "main")) != BSC_OK) {
+		return err;
+	}
+	return BscCall(s, 0, 0);
+}
+BscError BscRunString(BscScriptEngine* s, const char* str) {
+	BscError err;
+	if ((err = BscLoadString(s, str)) != BSC_OK) {
+		return err;
+	}
+	if ((err = BscGetGlobal(s, "main")) != BSC_OK) {
+		return err;
+	}
+	return BscCall(s, 0, 0);
+}
+BscError BscRunFile(BscScriptEngine* s, const char* filename) {
+	BscError err;
+	if ((err = BscLoadFile(s, filename)) != BSC_OK) {
+		return err;
+	}
+	if ((err = BscGetGlobal(s, "main")) != BSC_OK) {
+		return err;
+	}
+	return BscCall(s, 0, 0);
 }

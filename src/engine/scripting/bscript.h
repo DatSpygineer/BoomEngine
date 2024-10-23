@@ -22,7 +22,8 @@ typedef enum BscError {
 	BSC_ERROR_STACK_UNDERFLOW,
 	BSC_ERROR_OUT_OF_MEMORY,
 	BSC_ERROR_REDEFINITION,
-	BSC_ERROR_UNDEFINED
+	BSC_ERROR_UNDEFINED,
+	BSC_ERROR_FILE_UNABLE_TO_OPEN,
 } BscError;
 
 typedef enum ValueType {
@@ -90,9 +91,32 @@ BscError BscPushVector(BscScriptEngine* s, float vector[3]);
 BscError BscPushColor(BscScriptEngine* s, float color[4]);
 BscError BscPop(BscScriptEngine* s);
 
-BscError BscSetGlobal(BscScriptEngine* s, const char* name);
+bool BscGetBool(BscScriptEngine* s, int32_t idx);
+int32_t BscGetInt(BscScriptEngine* s, int32_t idx);
+uint32_t BscGetUInt(BscScriptEngine* s, int32_t idx);
+float BscGetFloat(BscScriptEngine* s, int32_t idx);
+BscFunction BscGetFunction(BscScriptEngine* s, int32_t idx);
+void BscGetVector(BscScriptEngine* s, int32_t idx, float vector[3]);
+void BscGetColor(BscScriptEngine* s, int32_t idx, float vector[4]);
+
+size_t BscStackCount(BscScriptEngine* s);
+
 BscError BscGetGlobal(BscScriptEngine* s, const char* name);
+BscError BscSetGlobal(BscScriptEngine* s, const char* name);
 
 BscError BscDeclareStruct(BscScriptEngine* s, const char* name, const BscStructFieldDef* fields, size_t field_count);
 BscError BscCreateStructInstance(BscScriptEngine* s, const char* name);
 
+BscError BscCall(BscScriptEngine* s, size_t argc, size_t retc);
+
+BscError BscGetField(BscScriptEngine* s, int32_t idx, const char* name);
+BscError BscSetField(BscScriptEngine* s, int32_t idx, const char* name);
+BscError BscGetI(BscScriptEngine* s, int32_t idx, size_t item_idx);
+BscError BscSetI(BscScriptEngine* s, int32_t idx, size_t item_idx);
+
+BscError BscLoad(BscScriptEngine* s, const uint8_t* data, size_t size);
+BscError BscLoadString(BscScriptEngine* s, const char* str);
+BscError BscLoadFile(BscScriptEngine* s, const char* filename);
+BscError BscRun(BscScriptEngine* s, const uint8_t* data, size_t size);
+BscError BscRunString(BscScriptEngine* s, const char* str);
+BscError BscRunFile(BscScriptEngine* s, const char* filename);
