@@ -17,8 +17,18 @@ typedef struct {
 BOOM_API void debug_log(DebugLogInfo info, int level, const char* fmt, ...);
 BOOM_API void debug_close_log();
 
+#ifndef NDEBUG
 #define DevMsg(...)  debug_log(LogInfo, __VA_ARGS__)
-#define DevWarn(...) debug_log(LogWarn, __VA_ARGS__)
+#else
+#define DevMsg(...)
+#endif
+
+#if !defined(NDEBUG) || !defined(BOOM_RELEASE_NO_WARNINGS)
+	#define DevWarn(...) debug_log(LogWarn, __VA_ARGS__)
+#else
+	#define DevWarn(...)
+#endif
+
 #define DevErr(...)  debug_log(LogError, __VA_ARGS__)
 
 #define Assert(__x)      if (!(__x)) { DevWarn("Assertion failed: %s", #__x); }

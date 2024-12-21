@@ -24,14 +24,14 @@ char* pStrDup(const char* str) {
 	char* p = (char*)malloc(strlen(str) + 1);
 	if (p == NULL) return NULL;
 	pStrCpy(p, strlen(str) + 1, str);
-	p[strlen(str) + 1] = '\0';
+	p[strlen(str)] = '\0';
 	return p;
 }
 
-errno_t pStrCat(char* dest, const size_t dest_max, const char* src) {
+PuliError pStrCat(char* dest, const size_t dest_max, const char* src) {
 	return pStrnCat(dest, dest_max, src, strlen(src));
 }
-errno_t pStrnCat(char* dest, const size_t dest_max, const char* src, const size_t count) {
+PuliError pStrnCat(char* dest, const size_t dest_max, const char* src, const size_t count) {
 	errno = 0;
 	const size_t src_len = strlen(src);
 	const size_t dest_len = strlen(dest);
@@ -40,7 +40,7 @@ errno_t pStrnCat(char* dest, const size_t dest_max, const char* src, const size_
 		if (remain > 0) {
 			strncat(dest, src, remain);
 		} else {
-			errno = ENOBUFS; // Out of range
+			return P_ERROR_BUFFER_IS_FULL;
 		}
 	} else {
 		strncat(dest, src, count);
@@ -48,14 +48,14 @@ errno_t pStrnCat(char* dest, const size_t dest_max, const char* src, const size_
 
 	return errno;
 }
-errno_t pStrCatFormat(char* dest, size_t dest_max, const char* format, ...) {
+PuliError pStrCatFormat(char* dest, size_t dest_max, const char* format, ...) {
 	va_list args;
 	va_start(args, format);
-	const errno_t e = pStrCatFormatV(dest, dest_max, format, args);
+	const PuliError e = pStrCatFormatV(dest, dest_max, format, args);
 	va_end(args);
 	return e;
 }
-errno_t pStrCatFormatV(char* dest, size_t dest_max, const char* format, va_list args) {
+PuliError pStrCatFormatV(char* dest, size_t dest_max, const char* format, va_list args) {
 	errno = 0;
 	char buf[P_PATH_MAX];
 	vsnprintf(buf, P_PATH_MAX, format, args);
@@ -64,17 +64,17 @@ errno_t pStrCatFormatV(char* dest, size_t dest_max, const char* format, va_list 
 	}
 	return pStrCat(dest, dest_max, buf);
 }
-errno_t pStrCpy(char* dest, const size_t dest_max, const char* src) {
+PuliError pStrCpy(char* dest, const size_t dest_max, const char* src) {
 	return pStrnCpy(dest, dest_max, src, strlen(src));
 }
-errno_t pStrnCpy(char* dest, const size_t dest_max, const char* src, const size_t count) {
+PuliError pStrnCpy(char* dest, const size_t dest_max, const char* src, const size_t count) {
 	errno = 0;
 	const size_t copy_len = dest_max <= count ? dest_max : count;
 
 	if (copy_len > 0) {
 		strncpy(dest, src, copy_len);
 	} else {
-		errno = ENOBUFS; // Out of range
+		return P_ERROR_BUFFER_IS_FULL;
 	}
 
 	return errno;
@@ -169,4 +169,73 @@ const char* pStrGetTok(const char* str, char* line, size_t maxBufSize, char deli
 	}
 	line[write_i] = '\0';
 	return str;
+}
+
+size_t pStrSplit(const char* str, char** out, size_t tokenMaxCount, size_t tokenMaxBufSize, char delim) {
+	size_t i = 0;
+	while (pStrGetTok(str, out[i], tokenMaxBufSize, delim) && i < tokenMaxCount) {
+		i++;
+	}
+	return i;
+}
+
+
+bool pStrToInt(const char* str, int* value) {
+	return pStrToIntRadix(str, value, 10);
+}
+bool pStrToIntRadix(const char* str, int* value, int radix) {
+	errno = 0;
+	long i = strtol(str, NULL, radix);
+	if (errno == 0) {
+		return false;
+	}
+	*value = (int)i;
+	return true;
+}
+bool pStrToUInt(const char* str, unsigned int* value) {
+	return pStrToUIntRadix(str, value, 10);
+}
+bool pStrToUIntRadix(const char* str, unsigned int* value, int radix) {
+	errno = 0;
+	unsigned long i = strtoul(str, NULL, radix);
+	if (errno == 0) {
+		return false;
+	}
+	*value = (unsigned int)i;
+	return true;
+}
+bool pStrToFloat(const char* str, float* value) {
+	errno = 0;
+	const float f = strtof(str, NULL);
+	if (errno == 0) {
+		return false;
+	}
+	*value = f;
+	return true;
+}
+bool pStrToDouble(const char* str, double* value)  {
+	errno = 0;
+	const double f = strtod(str, NULL);
+	if (errno == 0) {
+		return false;
+	}
+	*value = f;
+	return true;
+}
+bool pStrToBool(const char* str, bool* value) {
+	if (pStrEqualsNoCase(str, "true")) {
+		*value = true;
+		return true;
+	}
+	if (pStrEqualsNoCase(str, "false")) {
+		*value = false;
+		return true;
+	}
+
+	int ival = 0;
+	if (pStrToInt(str, &ival)) {
+		*value = ival != 0;
+		return true;
+	}
+	return false;
 }

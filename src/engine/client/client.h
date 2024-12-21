@@ -22,6 +22,7 @@ typedef struct LaunchOptions {
 } LaunchOptions;
 
 BOOM_API bool InitGameEngine(const LaunchOptions* options);
+BOOM_API bool UpdateGameEngine();
 BOOM_API void ShutdownGameEngine();
 
 BOOM_HEADER_END

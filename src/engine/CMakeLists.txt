@@ -24,3 +24,4 @@ set_target_properties(BoomClientLib PROPERTIES OUTPUT_NAME boom_cl)
 set_target_properties(BoomServerLib PROPERTIES OUTPUT_NAME boom_sv)
 
 add_subdirectory(scripting)
+add_subdirectory(bnet)
