@@ -4,7 +4,10 @@
 .idea
 
 # Ignore binaries
-./dev
-./game/bin
-./game/boom
-./game/boom.exe
+dev
+game/bin
+game/boom
+game/boom.exe
+game/boom_server
+game/boom_server.exe
+game/log
